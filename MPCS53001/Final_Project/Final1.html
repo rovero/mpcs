@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Administrator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Le styles -->
+  <link href="assets/css/bootstrap.css" rel="stylesheet">
+  <style>
+    body {
+      padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+    }
+  </style>
+  <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- Fav and touch icons -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="Final.html">UChicago Hospital</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="SemiFinal.html">For Staff</a></li>
+        <li class="active"><a href="Final1.html">For Administrator</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <p>Click on 'about' to learn more about our hospital database</p>
+</div>
+<div class="container">
+  <h4>Add a patient:</h4>
+  <form role="form" action = "addPatient.php" method="post">
+    <div class="form-group">
+      First Name:<br>
+      <input type="text" placeholder="first name" class="form-control" name = "fname" required pattern="[a-zA-Z]{3,30}"><br>
+      Last Name:<br>
+      <input type="text" placeholder="last name" class="form-control" name = "lname" required pattern="[a-zA-Z]{3,30}"><br>
+      Gender:<br>
+      <input type="radio" name="sex" required value="M" >Male<br>
+      <input type="radio" name="sex" value="F">Female<br>
+      Date of Birth:<br>
+      <input type="date" name="dob" required id="apdate" onclick="addPDate()"><br><br>
+      Responsible Department:<br>
+      <select datatype="number" name="dept" required >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<div class="container">
+  <h4>Add a doctor:</h4>
+  <form class="form" role="form" action = "addDoctor.php" method="post">
+    <div class="form-group">
+      First Name:<br>
+      <input type="text" placeholder="first name" class="form-control" name = "fname" required pattern="[a-zA-Z]{3,30}"><br>
+      Last Name:<br>
+      <input type="text" placeholder="last name" class="form-control" name = "lname" required pattern="[a-zA-Z]{3,30}"><br>
+      Gender:<br>
+      <input type="radio" name="sex" required value="Male"> Male<br>
+      <input type="radio" name="sex" value="Female"> Female<br>
+      Date of Birth:<br>
+      <input type="date" name="dob" id="addate" onclick="addDDate()"><br><br>
+      Department:<br>
+      <select name="dept">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<div class="container">
+  <script type="text/javascript">
+    function changeValueP(){
+      var option=document.getElementById('option').value;
+      if(option=="1"){
+        document.getElementById('inputP').type="text";
+        document.getElementById('inputP').placeholder="Please Enter a valid First Name";
+        document.getElementById('inputP').pattern="[a-zA-Z]{3,30}";
+      }
+      else if(option=="2"){
+        document.getElementById('inputP').type="text";
+        document.getElementById('inputP').placeholder="Please Enter a valid Last Name";
+        document.getElementById('inputP').pattern="[a-zA-Z]{3,30}";
+      }
+      else if(option=="3"){
+        document.getElementById('inputP').type="text";
+        document.getElementById('inputP').placeholder="Please Enter only M or F";
+        document.getElementById('inputP').pattern="(M|F)";
+      }
+      else if(option=="4"){
+        document.getElementById('inputP').type="date";
+        document.getElementById('inputP').onclick=upPDate();
+      }
+      else if(option=="5"){
+        document.getElementById('inputP').type="number";
+        document.getElementById('inputP').placeholder="Please Enter a number from 1 to 1292";
+        document.getElementById('inputP').min="1";
+        document.getElementById('inputP').max="1292";
+      }
+    }
+  </script>
+  <script type="text/javascript">
+    function addPDate(){
+      var now = new Date();
+        now.setDate(now.getDate()-1);
+      var minDate = now.toISOString().substring(0,10);
+      document.getElementById('apdate').max=minDate;
+    }
+  </script>
+  <script type="text/javascript">
+    function addDDate(){
+      var now = new Date();
+        now.setYear(now.getYear()-21);
+      var minDate = now.toISOString().substring(0,10);
+      document.getElementById('addate').max=minDate;
+    }
+  </script>
+  <script type="text/javascript">
+    function upPDate(){
+      var now = new Date();
+      now.setDate(now.getDate()-1);
+       var minDate = now.toISOString().substring(0,10);
+      document.getElementById('inputP').max=minDate;
+    }
+  </script>
+  <script type="text/javascript">
+    function upDDate(){
+      var now = new Date();
+        now.setYear(now.getYear()-21);
+      var minDate = now.toISOString().substring(0,10);
+      document.getElementById('inputD').max=minDate;
+    }
+  </script>
+  <h4>Update patient information:</h4>
+  <form class="form-inline" role="form" action = "updatePatient.php" method="post" id="inputPform">
+    <div class="form-group">
+      <input type="number" placeholder="Please enter a Patient ID from 901 to 2155" class="form-control" name = "id" style="width: 350px;" required min="901" max="2155">
+    </div><br><br>
+
+    <div class="form-group">
+      <select id="option" datatype="number" name="option" required  onchange="changeValueP();">
+        <option value="1">First Name</option>
+        <option value="2">Last Name</option>
+        <option value="3">Gender(M/F)</option>
+        <option value="4">Date of Birth</option>
+        <option value="5">Attending doctor work id</option>
+      </select>
+    </div><br><br>
+    <div class="controls">
+      <input id = "inputP" type="text" placeholder="Please Enter a valid First Name" class="form-control" name = "info" style="width: 350px;" required min="" max="" pattern="[a-zA-Z]{3,30}" onclick="">
+      <span data-alertid="patient"></span>
+    </div>
+    <div class="form-group">
+      <div class="controls">
+      <br><button type="submit" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="container">
+  <script type="text/javascript">
+    function changeValueD(){
+      var option1=document.getElementById('option1').value;
+      if(option1=="1"){
+        document.getElementById('inputD').type="text";
+        document.getElementById('inputD').placeholder="Please Enter a valid Name";
+        document.getElementById('inputD').pattern="/^[a-z ,.'-]+$/i";
+      }
+      else if(option1=="2"){
+        document.getElementById('inputD').type="text";
+        document.getElementById('inputD').placeholder="Please Enter only M or F";
+        document.getElementById('inputD').pattern="(M|F)";
+      }
+      else if(option1=="3"){
+        document.getElementById('inputD').type="date";
+        document.getElementById('inputD').onclick=upDDate();
+      }
+      else if(option1=="4"){
+        document.getElementById('inputD').type="number";
+        document.getElementById('inputD').placeholder="Please Enter a number from 1 to 10";
+        document.getElementById('inputD').min="1";
+        document.getElementById('inputD').max="10";
+      }
+    }
+  </script>
+  <h4>Update doctor information:</h4>
+  <form class="form-inline" role="form" action = "updateDoctor.php" method="post">
+    <div class="form-group">
+      <input type="number" placeholder="Please enter the Doctor Work ID" class="form-control" name = "id" style="width: 350px;" required min="1" max="1292"><br><br>
+      <select id="option1" datatype="number" name="option" onchange="changeValueD()">
+        <option value="1">Name(First Last)</option>
+        <option value="2">Gender(M/F)</option>
+        <option value="3">Date of Birth</option>
+        <option value="4">Department ID(1-10)</option>
+      </select><br><br>
+      <input id="inputD" type="text" placeholder="Please enter a valid Name" class="form-control" name = "info" style="width: 350px;" required min="" max="" pattern="/^[a-z ,.'-]+$/i" onclick=""><br>
+    </div>
+    <br><br><button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+<div class="container">
+  <h4>Delete a patient:</h4>
+  <form class="form-inline" role="form" action = "deletePatient.php" method="post">
+    <div class="form-group">
+      <input type="number" placeholder="ID Number" class="form-control" name = "id" required min="901" max="2155">
+    </div>
+    <button type="submit" class="btn btn-primary">Delete</button>
+  </form>
+</div>
+<div class="container">
+  <h4>Delete a doctor:</h4>
+  <form class="form-inline" role="form" action = "deleteDoctor.php" method="post">
+    <div class="form-group">
+      <input type="number" placeholder="ID Number" class="form-control" name = "id" required min="1" max="1292">
+    </div>
+    <button type="submit" class="btn btn-primary">Delete</button>
+  </form>
+</div>
+<div class="container">
+  <script type="text/javascript">
+    function checkRDate(){
+      var now = new Date(),
+        minDate = now.toISOString().substring(0,10);
+      document.getElementById('rdate').min=minDate;
+    }
+  </script>
+  <h4>Reserve for operation:</h4>
+  <form class="form-inline" role="form" action = "reserveOperation.php" method="post">
+    <div class="form-group">
+      <input type="number" placeholder="Patient ID" class="form-control" name = "pId" required min="901" max="2155">
+      <input type="date" class="form-control" name = "date" required min="" id="rdate" onclick="checkRDate()">
+      <input type="time" class="form-control" name = "time" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Reserve</button>
+  </form>
+</div>
+<div class="container">
+  <script type="text/javascript">
+    function checkCDate(){
+      var now = new Date(),
+        minDate = now.toISOString().substring(0,10);
+      document.getElementById('cdate').min=minDate;
+    }
+  </script>
+  <h4>Cancel your reservation:</h4>
+  <form class="form-inline" role="form" action = "cancelReservation.php" method="post">
+    <div class="form-group">
+      <input type="number" placeholder="Patient ID" class="form-control" name = "pId" required min="901" max="2155">
+      <input type="date" class="form-control" name = "date" required min="" id="cdate" onclick="checkCDate()">
+      <input type="time" class="form-control" name = "time" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Cancel</button>
+  </form>
+</div>
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document soL the pages load faster -->
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/js/bootstrap-transition.js"></script>
+<script src="../assets/js/bootstrap-alert.js"></script>
+<script src="../assets/js/bootstrap-modal.js"></script>
+<script src="../assets/js/bootstrap-dropdown.js"></script>
+<script src="../assets/js/bootstrap-scrollspy.js"></script>
+<script src="../assets/js/bootstrap-tab.js"></script>
+<script src="../assets/js/bootstrap-tooltip.js"></script>
+<script src="../assets/js/bootstrap-popover.js"></script>
+<script src="../assets/js/bootstrap-button.js"></script>
+<script src="../assets/js/bootstrap-collapse.js"></script>
+<script src="../assets/js/bootstrap-carousel.js"></script>
+<script src="../assets/js/bootstrap-typeahead.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+login as administrator
+1. add patient data
+2. add doctor data
+3. delete patient data
+4. delete doctor data
+5. update patient data
+6. update doctor data
+7. 

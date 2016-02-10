@@ -1,0 +1,14 @@
+*You don't have to implement any functions that modify your database such as registering
+a new user - you will get to do that in the last part of your app
+
+functionality:
+
+1.病人资料查询search a specific patient and get all his/her informations
+2.医生资料查询
+3.Show tables
+4.add patients-not implement this time
+5.add doctors-not implement this time
+6.can login as doctors to check their operation dates, and information of patients, 
+  and can reserve for operations
+7.can login as administrator to add either doctor information, or patient information, or reserve operation dates
+8. Show doctors with greatest number of patients in each department
