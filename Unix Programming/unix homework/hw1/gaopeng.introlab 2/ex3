@@ -1,0 +1,16 @@
+Peng Gao
+
+
+  File: ‘/home/mark/pub/51081’
+
+  Size: 4096      	Blocks: 8          IO Block: 16384  directory
+Device: 1ah/26d	Inode: 58165254    Links: 33
+Access: (0755/drwxr-xr-x)  Uid: (10005/    mark)   Gid: (10390/ adjunct)
+Access: 2016-01-12 15:29:01.150022950 -0600
+Modify: 2015-01-16 19:32:14.768425761 -0600
+Change: 2015-01-16 19:32:14.768425761 -0600
+
+
+It is a directory indicated by the first digit of access section which is 'd'.
+The size of the it is 4096 byte.
+Permission is shown at Access: (0755/drwxr-xr-x) where the rwx is the permission of the owner, r-x is the permission of group, r-x is the permission of others. r means reading. w means writing. x means execution. Access information is shown as "Access: 2016-01-12 15:29:01.150022950 -0600". Modification and change info are shown as "Modify: 2015-01-16 19:32:14.768425761 -0600 Change: 2015-01-16 19:32:14.768425761 -0600" 

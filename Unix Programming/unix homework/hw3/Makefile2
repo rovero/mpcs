@@ -1,0 +1,30 @@
+CC = gcc
+LD = gcc
+
+CFLAGS = -fPIC -Wall -g
+
+#the following is a SUFFIX RULE
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
+
+
+LIB_FILES = libmylib.so
+LIB_SONAME = $(LIB_FILES).5 
+LIB_MINOR = $(LIB_FILES).5.1
+LIB_RELEASE = libmylib.so.5.1.10 #$(LIB_MINOR).10 
+PROG = myapp
+PROG_OBJS = main.o
+DYNLINKFLAGS =-g -shared -Wl,-soname,$(LIB_SONAME)
+all: $(LIB_FILES) $(PROG)
+
+$(LIB_FILES): hello.o here.o bye.o
+	$(LD) $(DYNLINKFLAGS) -o $(LIB_RELEASE) hello.o here.o bye.o -lc
+	ln -sf $(LIB_RELEASE) $(LIB_MINOR)
+	ln -sf $(LIB_MINOR) $(LIB_SONAME)
+	ln -sf %(LIB_SONAME) $(LIB_FILES)
+
+$(PROG) : $(PROG_OBJS)
+	$(LD) $(LDFLAGS) $(PROG_OBJS) $(LIBS_FILES) -o $(PROG)
+
+clean:
+	rm *o $(PROG) $(LIB_FILES).*

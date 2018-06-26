@@ -1,0 +1,1 @@
+The server, first of all, accept connection from the client and receive a word from client. Then it just look up dictionary to see whether it has similar or the exact same one. The calculate similar is to calcuate the difference between the word in dictionary and the word the server has received. The 

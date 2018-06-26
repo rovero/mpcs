@@ -1,0 +1,17 @@
+Qianyu Deng
+
+qydeng@linux1:~$ ls ~mark/pub/51081
+
+ls outputs many files so this may be a directory.
+
+qydeng@linux3:~/cspp51081/labs/lab1$ stat ~mark/pub/51081
+  File: ‘/home/mark/pub/51081’
+  Size: 4096      	Blocks: 8          IO Block: 16384  directory
+Device: 23h/35d	Inode: 58165254    Links: 32
+Access: (0755/drwxr-xr-x)  Uid: (10005/    mark)   Gid: (10390/ adjunct)
+Access: 2017-01-11 21:20:52.511505388 -0600
+Modify: 2016-05-11 11:37:33.219065930 -0500
+Change: 2016-05-11 11:37:33.219065930 -0500
+ Birth: -
+
+From the above output, both the word after IO Block and ‘d’,the first character in Access indicates that this is a directory. Size shows that the size of this directory is 4096 bytes. The first three characters after ‘d’ in Access indicate that the owner of this directory has permission to read, write and execute where the owner is mark shown in “Uid: (10005/    mark)”. The later 3 characters indicate that users in the same group have permission to only read and execute. And the last 3 characters tell that users from other groups also have permission to only read and execute. The last access to this directory is shown in “Access: 2017-01-11 21:20:52.511505388 -0600”. And the directory is last modified and changed in “Modify: 2016-05-11 11:37:33.219065930 -0500” and “Change: 2016-05-11 11:37:33.219065930 -0500”.

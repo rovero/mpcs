@@ -1,0 +1,11 @@
+Script started on Tue 09 Feb 2016 12:20:11 PM CST
+]0;gaopeng@linux2: ~/hw1gaopeng@linux2:~/hw1$ make
+make: `my_upipe' is up to date.
+]0;gaopeng@linux2: ~/hw1gaopeng@linux2:~/hw1$ makecp -r 51081 /home/gaopeng/hw1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cd ..[K[3Plscd .../execl.test[7Pcd ..[3Plscd ..p -r 51081 /home/gaopeng/hw1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake[K[K./my_upipe "cat /etc/passwd" "grep root"
+root:x:0:0:root:/root:/bin/bash
+]0;gaopeng@linux2: ~/hw1gaopeng@linux2:~/hw1$ cat /etc/passwd|grep root
+[01;31m[Kroot[m[K:x:0:0:[01;31m[Kroot[m[K:/[01;31m[Kroot[m[K:/bin/bash
+]0;gaopeng@linux2: ~/hw1gaopeng@linux2:~/hw1$ exit
+exit
+
+Script done on Tue 09 Feb 2016 12:20:36 PM CST

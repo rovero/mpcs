@@ -1,0 +1,51 @@
+Peng Gao
+
+
+gaopeng@linux1:~/cspp51081/labs/lab1$ ln -s file1 file_soft
+gaopeng@linux1:~/cspp51081/labs/lab1$ ln file1 file_hard
+gaopeng@linux1:~/cspp51081/labs/lab1$ ls -il file1 file_soft file_hard 
+38752514077 -rw------- 2 gaopeng gaopeng 0 Jan 13 14:19 file1
+38752514077 -rw------- 2 gaopeng gaopeng 0 Jan 13 14:19 file_hard
+38659823770 lrwxrwxrwx 1 gaopeng gaopeng 5 Jan 13 14:28 file_soft -> file1
+
+
+The file1 is the original one. file_soft is the softlink to the file1. file_hard
+ is the hardlink to the file1. By using ls command, we can see that the inode of file1 and file_hard are the same, which means they are pointing to the same filename part. The filename part points to the same address in the hardware. So the hard_link does not create a new file. It is just a pointer point to the original inode of the original file.  However, file_soft points to another filename part, which means it creates a new file because it the filename part points to a new inode. Also you can see that the permission of file1 and file_hard are the same but the permission of file1 and file_soft are different. Besides, you can see that the link number of file1 and file_hard are the same but that of file1 and file_soft are different. It shows that only hard_link can add the number of link number, which also indicate that hardlink does create a link instead of a new file.
+
+
+
+gaopeng@linux1:~/cspp51081/labs/lab1$ stat file1 file_soft file_hard 
+  File: ‘file1’
+  Size: 0         	Blocks: 0          IO Block: 16384  regular empty file
+Device: 1ah/26d	Inode: 38752514077  Links: 2
+Access: (0600/-rw-------)  Uid: (13841/ gaopeng)   Gid: (17124/ gaopeng)
+Access: 2016-01-13 14:19:26.251518797 -0600
+Modify: 2016-01-13 14:19:26.251518797 -0600
+Change: 2016-01-13 14:28:11.859589097 -0600
+ Birth: -
+  File: ‘file_soft’ -> ‘file1’
+  Size: 5         	Blocks: 0          IO Block: 16384  symbolic link
+Device: 1ah/26d	Inode: 38659823770  Links: 1
+Access: (0777/lrwxrwxrwx)  Uid: (13841/ gaopeng)   Gid: (17124/ gaopeng)
+Access: 2016-01-13 14:28:05.675821211 -0600
+Modify: 2016-01-13 14:28:05.675821211 -0600
+Change: 2016-01-13 14:28:05.675821211 -0600
+ Birth: -
+  File: ‘file_hard’
+  Size: 0         	Blocks: 0          IO Block: 16384  regular empty file
+Device: 1ah/26d	Inode: 38752514077  Links: 2
+Access: (0600/-rw-------)  Uid: (13841/ gaopeng)   Gid: (17124/ gaopeng)
+Access: 2016-01-13 14:19:26.251518797 -0600
+Modify: 2016-01-13 14:19:26.251518797 -0600
+Change: 2016-01-13 14:28:11.859589097 -0600
+ Birth: -
+
+
+You can see that the size of file1 and file_hard are the same. However the size of file2 is different from others, which means it creates a new one.
+
+qydeng@linux3:~/cspp51081/labs/lab1$ ls -li myfile soft_link hard_link 
+36548605982 -rw-rw---- 2 qydeng qydeng 22 Jan 10 12:58 hard_link
+36548605982 -rw-rw---- 2 qydeng qydeng 22 Jan 10 12:58 myfile
+36514791438 lrwxrwxrwx 1 qydeng qydeng  6 Jan 10 18:16 soft_link -> myfile
+
+

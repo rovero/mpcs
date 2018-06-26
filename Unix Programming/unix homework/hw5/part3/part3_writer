@@ -1,0 +1,18 @@
+Script started on Tue 09 Feb 2016 06:52:19 PM CST
+]0;gaopeng@linux2: ~/hw1gaopeng@linux2:~/hw1$ ./myreadergcc reader.c -o reader[14P./reader[4Pmyreadergcc reader.c -o readerpwd[K[1Plscd pipes/ls[Kcd 51081/./my_npipe_writer
+FIFO opened successfully, talk to me baby...
+Opening named pipe: mypipe
+Enter Input:hellp
+Writing buffer to pipe...done
+Enter Input:hahaha
+Writing buffer to pipe...done
+Enter Input:byebye
+Writing buffer to pipe...done
+Enter Input:exit
+Writing buffer to pipe...done
+
+Exiting
+]0;gaopeng@linux2: ~/hw1gaopeng@linux2:~/hw1$ exit
+exit
+
+Script done on Tue 09 Feb 2016 06:53:02 PM CST

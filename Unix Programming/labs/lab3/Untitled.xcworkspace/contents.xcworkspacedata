@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Makefile2">
+   </FileRef>
+   <FileRef
+      location = "group:Makefile1">
+   </FileRef>
+   <FileRef
+      location = "group:mylib.h">
+   </FileRef>
+   <FileRef
+      location = "group:hello.c">
+   </FileRef>
+   <FileRef
+      location = "group:main.c">
+   </FileRef>
+   <FileRef
+      location = "group:here.c">
+   </FileRef>
+   <FileRef
+      location = "group:bye.c">
+   </FileRef>
+</Workspace>

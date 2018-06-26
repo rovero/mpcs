@@ -1,0 +1,18 @@
+Script started on Tue 09 Feb 2016 06:51:59 PM CST
+]0;gaopeng@linux2: ~/hw1gaopeng@linux2:~/hw1$ ./readergcc reader.c -o readerpwd[K[K[K[Kmake
+gcc -c my_npipe_reader.c
+gcc  -o my_npipe_reader my_npipe_reader.o
+gcc -c my_npipe_writer.c
+gcc  -o my_npipe_writer my_npipe_writer.o
+]0;gaopeng@linux2: ~/hw1gaopeng@linux2:~/hw1$ make./readergcc reader.c -o readerpwd[K[1Plscd pipes/ls[Kcd 51081/./my_npipe_writermake[K clean[K./my_npipe_writer[K[K[K[K[K[Kreader 
+Creating named pipe: mypipe
+Waiting for input...Got it: 'hellp'
+Waiting for input...Got it: 'hahaha'
+Waiting for input...Got it: 'byebye'
+Waiting for input...Got it: 'exit'
+
+Exiting
+]0;gaopeng@linux2: ~/hw1gaopeng@linux2:~/hw1$ exit
+exit
+
+Script done on Tue 09 Feb 2016 06:53:04 PM CST

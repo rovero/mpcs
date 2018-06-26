@@ -1,0 +1,37 @@
+CC = gcc
+LD = gcc
+
+CFLAGS = -fPIC -Wall -g
+
+#the following is a SUFFIX RULE
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
+
+#the following are MACROS
+PROG_OBJS = main.o
+PROG = myapp
+DYNLINKFLAGS = -g -shared -W1,-soname,$(LIB_SONAME) -o $(PROG_OBJS)
+LIBS = -lc -L. -lmylib
+LIB_FILES = libmylib.so
+LIB_SONAME = $(LIB_FILES).5
+LIB_MINOR = $(LIB_SONAME).1
+LIB_RELEASE = $(LIB_MINOR).10
+
+#the following is a TARGET
+all: $(LIB_FILES) $(PROG)
+
+#create the library with this RULE:
+$(LIB_FILES): hello.o here.o bye.o
+	$(LD) $(DYNLINKFLAGS) -o $(LIB_RELEASE) hello.o here.o bye.o -lc
+	ln -sf $(LIB_RELEASE) $(LIB_MINOR)
+	ln -sf $(LIB_MINOR) $(LIB_SONAME)
+	ln -sf $(LIB_SONAME) $(LIB_FILES)
+
+#create the program with this RULE:
+$(PROG) : $(PROG_OBJS)
+	$(LD) $(LDFLAGS) $(PROG_OBJS) $(LIBS) -o $(PROG)
+
+#clean up the files with this RULE:
+clean:
+	rm *.o $(PROG) $(LIB_FILES) $(LIB_FILES).*
+

@@ -1,0 +1,41 @@
+Qianyu Deng
+
+qydeng@linux3:~/cspp51081/labs/lab1$ ln myfile hard_link
+qydeng@linux3:~/cspp51081/labs/lab1$ ln -s myfile soft_link
+
+qydeng@linux3:~/cspp51081/labs/lab1$ ls -li myfile soft_link hard_link 
+36548605982 -rw-rw---- 2 qydeng qydeng 22 Jan 10 12:58 hard_link
+36548605982 -rw-rw---- 2 qydeng qydeng 22 Jan 10 12:58 myfile
+36514791438 lrwxrwxrwx 1 qydeng qydeng  6 Jan 10 18:16 soft_link -> myfile
+
+From the ls command, we can see that the origin file, myfile and the hard link, hard_link has the same Inode, which means they share the same data block, and the hard link just provides another name for myfile, so creating a hard link does not mean to create a new file, and thus the hard link and the origin file has the same accessibility. The soft link has different Inode and accessibility, so the system creates a new file for the soft link.
+
+
+qydeng@linux3:~/cspp51081/labs/lab1$ stat myfile soft_link hard_link 
+  File: ‘myfile’
+  Size: 22        	Blocks: 8          IO Block: 16384  regular file
+Device: 23h/35d	Inode: 36548605982  Links: 2
+Access: (0660/-rw-rw----)  Uid: (13910/  qydeng)   Gid: (17193/  qydeng)
+Access: 2017-01-10 13:25:21.975336868 -0600
+Modify: 2017-01-10 12:58:05.556682290 -0600
+Change: 2017-01-10 13:17:16.715748249 -0600
+ Birth: -
+  File: ‘soft_link’ -> ‘myfile’
+  Size: 6         	Blocks: 0          IO Block: 16384  symbolic link
+Device: 23h/35d	Inode: 36514791438  Links: 1
+Access: (0777/lrwxrwxrwx)  Uid: (13910/  qydeng)   Gid: (17193/  qydeng)
+Access: 2017-01-10 18:16:30.190927704 -0600
+Modify: 2017-01-10 18:16:30.190927704 -0600
+Change: 2017-01-10 18:16:30.190927704 -0600
+ Birth: -
+  File: ‘hard_link’
+  Size: 22        	Blocks: 8          IO Block: 16384  regular file
+Device: 23h/35d	Inode: 36548605982  Links: 2
+Access: (0660/-rw-rw----)  Uid: (13910/  qydeng)   Gid: (17193/  qydeng)
+Access: 2017-01-10 13:25:21.975336868 -0600
+Modify: 2017-01-10 12:58:05.556682290 -0600
+Change: 2017-01-10 13:17:16.715748249 -0600
+ Birth: -
+
+From the stat command, we can see that since myyfile and hard_link share the same Inode, so they have the same size. For the soft link, the system actually creates a new file but it only contains path to the origin file so the file size is very small.
+

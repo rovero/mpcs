@@ -1,0 +1,56 @@
+Script started on Fri Feb 12 14:42:01 2016
+[?1034hbash-3.2$ make
+make: `gosh' is up to date.
+bash-3.2$ ./og[K[Kgosh
+gosh> cd /usr/lib
+cd
+c1 0: cd
+c1 1: /usr/lib
+Running Command
+--------------- 
+change dir: success
+--------------- 
+Command Returned Exit Code 0
+gosh> pwd
+pwd
+c1 0: pwd
+Running Command
+--------------- 
+/usr/lib
+a child process: 11884 has been reaped
+--------------- 
+Command Returned Exit Code 0
+gosh> MYVAR='All work and no play makes Jack a dull boy'
+MYVAR=All work and no play makes Jack a dull boy
+
+c1 0: MYVAR='All work and no play makes Jack a dull boy'
+
+Running Command
+--------------- 
+MYVAR=All work and no play makes Jack a dull boy
+--------------- 
+Command Returned Exit Code 0
+gosh> --------------- 
+Command Returned Exit Code 0
+gosh> echo $MYVAR
+echo
+c1 0: echo
+c1 1: $MYVAR
+Running Command
+--------------- 
+All work and no play makes Jack a dull boy
+--------------- 
+Command Returned Exit Code 0
+gosh> --------------- 
+Command Returned Exit Code 0
+gosh> exit
+No line
+Running Command
+--------------- 
+No line
+Running Command
+--------------- 
+bash-3.2$ exit
+exit
+
+Script done on Fri Feb 12 14:43:08 2016
